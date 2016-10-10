@@ -1,0 +1,79 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.css">
+</head>
+<body class="container-fluid red" ng-app="twitchStreaming">
+    
+    <div class="row" ng-controller="streamers">
+        
+    <button id="getStreamers" class="col-xs-2 col-xs-offset-5" ng-click="getStreamers()" ng-hide="results"><i class="fa fa-twitch fa-5x"></i></button>
+            
+        
+     <div id="mainDiv"class="col-xs-8 col-xs-offset-2 col-lg-6 col-lg-offset-3">
+         
+         <div id="filters" class="row">
+            
+             <div id="all" class="col-xs-4 buttonDiv" ng-show="results">
+                 <button class="bFilters" ng-click="showAll()"><h1>All</h1></button>
+             </div>
+             
+             <div id="live" class="col-xs-4 buttonDiv" ng-show="results">
+                 <button class="bFilters" ng-click="showOnline()"><h1>Online</h1></button>
+             </div>
+             
+             <div id="not-live" class="col-xs-4 buttonDiv" ng-show="results">
+                 <button class="bFilters" ng-click="showOffline()"><h1>Offline</h1></button>
+             </div>
+             
+         </div>
+                  
+         
+        <div class="row channelList {{streamer.status}}" ng-repeat="streamer in omniArray">
+
+            <div class="col-xs-2">
+                <img id="channelPic" class="img-responsive img-circle" src="{{streamer.picture}}">
+            </div>
+            <div class="col-xs-8">
+                <div class="row">
+                    <div class="col-xs-8"><h1 class="channelName">{{streamer.name}}</h1></div> 
+                    <div class="col-xs-4"><h3> {{streamer.game}}</h3></div>
+                </div>
+                <i class="fa fa-twitch"></i> <a class="channelUrl" href="{{streamer.url}}">{{streamer.url}}</a>
+            </div>
+            <div class="col-xs-2">
+                <i id="online" class="fa fa-check-circle fa-5x" ng-show="{{streamer.status}}"></i>
+                <i id="offline" class="fa fa-times-circle fa-5x" ng-hide="{{streamer.status}}"></i>
+            </div>
+
+
+    </div>
+            <!--
+            <h4>{{streamer.name}}</h4>    
+            <p>{{streamer.status}}</p>
+            <img src="{{streamer.picture}}">
+            <a href="{{streamer.url}}">Url</a>
+            -->
+
+        </div>
+        
+    </div>
+    
+    
+  <div class="row credits">
+    <div class="col-xs-2 col-xs-offset-5">
+    <a href="#">by Jeremy Weisener</a>
+    </div>
+  </div>
+  
+        <script src="https://rawgithub.com/JeremyWeisener/twitchChecker/master/AngularJS.js"></script>
+        <script src="https://rawgithub.com/JeremyWeisener/weatherApp/master/jQuery.js"></script>
+        <script src="https://rawgithub.com/JeremyWeisener/TwitchFollows/master/stuff.js"></script>
+  
+  
+</body>
+    
+</html>
